@@ -5,7 +5,7 @@ This a project for a Discord bot where:
 2. When 2 specific users connect a voice channel, the bot enter and reproduce a mp3 file (user1, user2)
 3. When 1 specific user connects a voice channel, the bot enter and reproduce a mp3 file (user3)
 
-#Before use the bot:
+# Before use the bot:
 
 Create a ".env" file with the following variables:
 
@@ -22,7 +22,7 @@ Create a ".env" file with the following variables:
 - DISCORD_USER are the user id for each user.
 
 
-Requeriments:
+# Requeriments:
 
 Python
 FFMPEG
