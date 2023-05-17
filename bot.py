@@ -10,14 +10,14 @@ from environ import Env
 
 env = Env()
 env.read_env()
- 
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 JOKES = os.getenv('DISCORD_JOKES').split(',')
 USER1 = int(os.getenv('DISCORD_USER1'))
 USER2 = int(os.getenv('DISCORD_USER2'))
- 
+
 # client = discord.Client(intents=discord.Intents.default())
 
 intents = discord.Intents.default()
@@ -29,13 +29,10 @@ bot = commands.Bot(command_prefix='/', intents=intents)
 async def on_ready():
     print(f'{bot.user.name} se ha conectado a Discord!')
  
+    print(f'{bot.user} is connected to the following guild:\n')
     for guild in bot.guilds:
-        if guild.name == GUILD:
-            break
-    print(
-        f'{bot.user} is connected to the following guild:\n'
-        f'{guild.name}(id: {guild.id})'
-    )
+        print(f'{guild.name}(id: {guild.id})')
+
 
 @bot.event
 async def on_member_join(member):
@@ -48,7 +45,7 @@ async def on_member_join(member):
  
 @bot.event
 async def on_message(message):
-    print(f'Jokes: {JOKES}')
+    # print(f'Jokes: {JOKES}')
     message_content = message.content
     # print('Mensaje recibido')
 
@@ -67,16 +64,20 @@ async def on_voice_state_update(member,before,after):
     if after.channel == None:
         return
     
+    print(f"{member.name} ha cambiado su estado en el canal de voz")
     list_id = (USER1,USER2)
     # print(list_id)
     
-    if member.id in list_id and before == None:
+    if member.id in list_id and before.channel == None:
 
         channel = bot.get_channel(after.channel.id)
 
         contador = 0
         max_cont = 2
+        # print(f"miembros del canal: {channel.members}")
+        
         for _ in channel.members:
+            # print(f"id: {_.id}")
             if _.id in list_id:
                 contador += 1
                 print("Se ha conectado alguien relevante")
