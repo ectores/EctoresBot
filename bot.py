@@ -68,9 +68,9 @@ async def on_voice_state_update(member,before,after):
         return
     
     list_id = (USER1,USER2)
-    print(list_id)
+    # print(list_id)
     
-    if member.id in list_id:
+    if member.id in list_id and before == None:
 
         channel = bot.get_channel(after.channel.id)
 
@@ -82,7 +82,7 @@ async def on_voice_state_update(member,before,after):
                 print("Se ha conectado alguien relevante")
         
         if contador == max_cont:
-            print("Hora de unirme al servicor")
+            print("Hora de unirme al servidor")
             vc = await channel.connect()
             vc.play(discord.FFmpegPCMAudio('testing.mp3'), after=lambda e: print('done', e))
             time.sleep(7)
