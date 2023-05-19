@@ -3,6 +3,7 @@ import os
 import random
 import discord
 import time
+import io
 
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -13,17 +14,21 @@ env.read_env()
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
-JOKES = os.getenv('DISCORD_JOKES').split(',')
+
 USER1 = int(os.getenv('DISCORD_USER1'))
 USER2 = int(os.getenv('DISCORD_USER2'))
+USER3 = int(os.getenv('DISCORD_USER3'))
 
 # client = discord.Client(intents=discord.Intents.default())
 
 intents = discord.Intents.default()
+intents.members = True
+intents.messages = True
 intents.message_content = True
 
-bot = commands.Bot(command_prefix='/', intents=intents)
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+
  
 @bot.event
 async def on_ready():
@@ -34,27 +39,13 @@ async def on_ready():
         print(f'{guild.name}(id: {guild.id})')
 
 
+
 @bot.event
 async def on_member_join(member):
     await member.create_dm()
     await member.dm_channel.send(
         f'Pium Pium {member.name}, bienvenido al Monke Server Pium Pium!'
     )
- 
-
- 
-@bot.event
-async def on_message(message):
-    # print(f'Jokes: {JOKES}')
-    message_content = message.content
-    # print('Mensaje recibido')
-
-    if message_content == '/piumpium':
-
-        response = random.choice(JOKES)
-
-        await message.channel.send(response.replace("'","").replace("]","").replace("[",""))
-
 
 
 
@@ -64,8 +55,9 @@ async def on_voice_state_update(member,before,after):
     if after.channel == None:
         return
     
-    print(f"{member.name} ha cambiado su estado en el canal de voz")
+    # print(f"{member.name} ha cambiado su estado en el canal de voz")
     list_id = (USER1,USER2)
+    
     # print(list_id)
     
     if member.id in list_id and before.channel == None:
@@ -80,7 +72,7 @@ async def on_voice_state_update(member,before,after):
             # print(f"id: {_.id}")
             if _.id in list_id:
                 contador += 1
-                print("Se ha conectado alguien relevante")
+                # print("Se ha conectado alguien relevante")
         
         if contador == max_cont:
             print("Hora de unirme al servidor")
@@ -89,20 +81,52 @@ async def on_voice_state_update(member,before,after):
             time.sleep(7)
             await vc.disconnect()
 
-
         else:
             print("Falta gente")
 
-@bot.command("piumpiumon")
-async def join(ctx):
-    print("piumpiumon :3")
-    channel = ctx.author.voice.channel
-    await channel.connect() 
+    if member.id == USER3 or member.id == USER1 and before.channel == None:
+        channel = bot.get_channel(after.channel.id)
+        print("Hora de ser un Saco Bot")
+        vc = await channel.connect()
+        vc.play(discord.FFmpegPCMAudio('sus.mp3'), after=lambda e: print('done', e))
+        time.sleep(5)
+        await vc.disconnect()
 
-@bot.command("piumpiumof")
-async def leave(ctx):
-    print("piumpiumof :()")
-    await ctx.voice_client.disconnect()
 
+
+@bot.event
+async def on_message(message):
+
+    if message.author == bot.user:
+        return
+    
+    message_content = message.content
+
+    if message_content == '/sus':
+        user_id = message.author.id
+        guild_id = message.guild.id
+
+        for guild in bot.guilds:
+            if guild.id == guild_id:
+                for channel in guild.voice_channels:
+                    # print(channel.members)
+                    for member in channel.members:
+                        if member.id == user_id:
+                            print(f"{member.name} me ha invocado")
+                            vc = await channel.connect()
+                            vc.play(discord.FFmpegPCMAudio('sus.mp3'), after=lambda e: print('done', e))
+                            time.sleep(5)
+                            await vc.disconnect()
+                            break
+                break
+
+    elif message_content == '/piumpium':
+        jokes = io.open("jokes.txt", mode="r", encoding="utf-8")
+        response = random.choice(jokes.readlines())
+        jokes.close()
+        print("piumpium")
+        await message.channel.send(response)
+
+        
  
 bot.run(TOKEN)
