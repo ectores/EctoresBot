@@ -15,10 +15,13 @@ Create a ".env" file with the following variables:
 + DISCORD_USER3=
 + DISCORD_USER4=
 + DISCORD_COMMAND=
++ DISCORD_SOUND1=
++ DISCORD_SOUND2=
 
 - DISCORD_TOKEN is the bot token. See https://discord.com/developers/applications for more information
-- DISCORD_COMMAND is a custom command you can choose :D. It can be "/eb" like EctoresBot :D
 - DISCORD_USER is a UserID for each user. Activate the Developer Mode in Discord for see de ID (is a number with 18 digits)
+- DISCORD_COMMAND is a custom command you can choose :D. It can be "/eb" like EctoresBot :D
+- DISCORD_SOUND is the mp3 file you want play. NOTE: don't write the ".mp3", just the name. For example if your file is "sound.mp3" you write "sound"
 
 Also, you will need a "jokes.txt" where are all the jokes you want the bot write like 1 joke per line.
 

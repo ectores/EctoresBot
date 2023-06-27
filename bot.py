@@ -17,6 +17,8 @@ env.read_env()
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 COMMAND = os.getenv('DISCORD_COMMAND')
+SOUND1 = os.getenv('DISCORD_SOUND1')
+SOUND2 = os.getenv('DISCORD_SOUND2')
 USER1 = int(os.getenv('DISCORD_USER1'))
 USER2 = int(os.getenv('DISCORD_USER2'))
 USER3 = int(os.getenv('DISCORD_USER3'))
@@ -63,13 +65,13 @@ async def on_voice_state_update(member,before,after):
                 contador += 1
         
         if contador == max_cont:
-            await bot_music("lol",channel,1)
+            await bot_music(SOUND1,channel,1)
 
         else:
             print("I need more users for talking")
     #When a specific user enter a channel, the bot join at voice channel and will play a sound
     if (member.id == USER3 or member.id == USER4) and before.channel == None:
-        await bot_music("sus",channel,1)
+        await bot_music(SOUND2,channel,1)
 
 
 
