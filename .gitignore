@@ -1,9 +1,10 @@
-.gitignore
+#Environment
 .env
+
+#Workspace
 EctoresBot.code-workspace
-voice.py
-commands.py
-__pycache__
+
+#Local mp3 files
 mp3/genshin.mp3
 mp3/lol.mp3
 mp3/majin.mp3
