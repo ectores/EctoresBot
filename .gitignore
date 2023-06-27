@@ -1,3 +1,4 @@
+.gitignore
 .env
 EctoresBot.code-workspace
 voice.py
