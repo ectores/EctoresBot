@@ -1,5 +1,9 @@
 .env
-testing.mp3
-donsackboy.mp3
-donsackboyv2.mp3
 EctoresBot.code-workspace
+voice.py
+commands.py
+__pycache__
+mp3/genshin.mp3
+mp3/lol.mp3
+mp3/majin.mp3
+mp3/sus.mp3
