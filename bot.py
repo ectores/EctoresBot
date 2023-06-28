@@ -85,6 +85,9 @@ async def on_message(message):
     if message_content.startswith(f"{COMMAND}"):
         list_message = message_content.split(" ")
         total_message = [i for i in list_message if i != ""]
+
+        list_command = COMMAND.split(" ")
+        total_command = [i for i in list_command if i != ""]
         if len(total_message) == 1:
             await message.channel.send(f"For showing my commands use **{COMMAND} help**")
             return
@@ -106,7 +109,7 @@ async def on_message(message):
                 await message.channel.send("The audio input doesn't exists :(")
                 return
             #If
-            elif len(total_message) == (len(f"{COMMAND}") + 2):
+            elif len(total_message) == (len(total_command) + 2):
                 text_channel = message.channel 
                 user_id = message.author.id
                 guild_id = message.guild.id

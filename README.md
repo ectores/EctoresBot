@@ -23,7 +23,7 @@ Create a ".env" file with the following variables:
 - DISCORD_COMMAND is a custom command you can choose :D. It can be "/eb" like EctoresBot :D
 - DISCORD_SOUND is the mp3 file you want play. NOTE: don't write the ".mp3", just the name. For example if your file is "sound.mp3" you write "sound"
 
-Also, you will need a "jokes.txt" where are all the jokes you want the bot write like 1 joke per line.
+Also, you will need edit the "jokes.txt" for adding all the jokes you want (my example is in Spanish).
 
 And Finally, move your mp3 files at the mp3 folder and it's done (there is a default.mp3 and it will play when someone wanna play a mp3 but it doesn't exist)
 

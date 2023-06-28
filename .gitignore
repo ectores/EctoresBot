@@ -1,14 +1,9 @@
 #Local mp3 files
-mp3/genshin.mp3
-mp3/lol.mp3
-mp3/majin.mp3
-mp3/sus.mp3
+mp3/*
+!mp3/default.mp3
 
 #Environment
 .env
 
 #Workspace
 EctoresBot.code-workspace
-
-#Jokes
-jokes.txt
