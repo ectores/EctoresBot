@@ -7,3 +7,9 @@ mp3/*
 
 #Workspace
 EctoresBot.code-workspace
+
+#Test
+test.py
+
+#Cache
+__pycache__

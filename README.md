@@ -1,30 +1,34 @@
 # EctoresBot
-Hi, this is my first Discord bot project. In Summary, the bot has 3 funtionalities (but 2 are very similars) where: 
+Version 1.1
+Hi, this is my first Discord bot project. In Summary, the bot has 2 funtionalities where: 
 
-1. With a command, the bot text "bad jokes".
-2. When 2 specific users connect at the same time in a voice channel, the bot enter and reproduce a mp3 file (User1 and User2 -> Sound1)
-3. When 1 specific user connects a voice channel, the bot enter and reproduce a mp3 file (User3 or User4 -> Sound2)
+1. Text bad jokes with a command.
+2. When a user enter a voice channel, the voice enter and play an audio
 
 # Before use the bot:
 
 Create a ".env" file with the following variables:
 
 + DISCORD_TOKEN=
-+ DISCORD_USER1=
-+ DISCORD_USER2=
-+ DISCORD_USER3=
-+ DISCORD_USER4=
-+ DISCORD_COMMAND=
-+ DISCORD_SOUND1=
-+ DISCORD_SOUND2=
 
-- DISCORD_TOKEN is the bot token. See https://discord.com/developers/applications for more information
-- DISCORD_USER is a UserID for each user. Activate the Developer Mode in Discord for see de ID (is a number with 18 digits)
-- DISCORD_COMMAND is a custom command you can choose :D. It can be "/eb" like EctoresBot :D
-- DISCORD_SOUND is the mp3 file you want play. NOTE: don't write the ".mp3", just the name. For example if your file is "sound.mp3" you write "sound"
+DISCORD_TOKEN is the bot token. See https://discord.com/developers/applications for more information
 
-Also, you will need edit the "jokes.txt" for adding all the jokes you want (my example is in Spanish).
++ See the requirements.txt for install the dependences.
 
-And Finally, move your mp3 files at the mp3 folder and it's done (there is a default.mp3 and it will play when someone wanna play a mp3 but it doesn't exist)
+# Bot Features
+
+- Jokes customizable in jokes.txt
+- Bot Command customizable (The default command is **/eb** but you can change it in config.json)
+- You can add many audios at the mp3 folder for playing with **/eb play sound** (withoud the .mp3)
+- Yoy can config an audio for yourself when you enter at the voice channel with the command **/eb addsong sound** or edit for other users editing the config.json file.
+- Finnaly, there is a default.mp3 and it will play when someone wanna play a mp3 but it doesn't exist
+
+# Commands
+
+- **/eb addsound *sound***   For adding your custom sound when you enter at the voice chat :D"
+- **/eb help**   For showing my commands (recursion :O)"
+- **/eb joke**   For telling a ~~dumb~~ joke"
+- **/eb play *sound***   For playing a mp3 file in my directory (you should be in a voice channel)"
+- **/eb playlist**   For showing all the mp3 files in the folder."
 
 # It's done, use the EctoresBot :D
