@@ -105,7 +105,7 @@ async def on_message(message):
             elif len(total_message) == (len(total_command) + 2):
                 
                 config.Config().add_user(message.guild.id, message.author.id, total_message[len(total_message) - 1])
-                await message.channel.send(f"Hey {message.author.nick}, your sound has been added.")
+                await message.channel.send(f"Hey {message.author.name}, your sound has been added.")
 
         elif message_content == f"{command} playlist":
             archivos = os.listdir("mp3/")

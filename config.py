@@ -9,8 +9,12 @@ class Config():
         self.user_id = str(user_id)
         self.sound = sound
 
-        self.config_file["Information"]["Server"][self.server_id][self.user_id] = self.sound
-        self.config_file.to_json("config.json")
+        if self.server_id in self.config_file["Information"]["Server"]:
+            self.config_file["Information"]["Server"][self.server_id][self.user_id] = self.sound
+            self.config_file.to_json("config.json")
+        else:
+            self.config_file["Information"]["Server"][self.server_id] = {self.user_id:self.sound}
+            self.config_file.to_json("config.json")
     
     def search_sound(self, server_id, user_id):
         return self.config_file["Information"]["Server"][server_id][user_id]
